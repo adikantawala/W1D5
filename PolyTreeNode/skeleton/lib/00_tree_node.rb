@@ -52,7 +52,18 @@ class PolyTreeNode
     end
 
     def bfs(target_value)
-      
+      final = []
+      #unshift and pop
+      final.unshift(self)
+
+      until final.empty?
+        temp = final.pop
+        return temp if temp.value == target_value
+        temp.children.each do |child|
+          final.unshift(child)
+        end
+      end
+      nil
     end
 
     def inspect
